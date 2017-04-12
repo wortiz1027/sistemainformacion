@@ -7,13 +7,13 @@ import co.com.sistema.sistemainformacion.utils.Util;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Login extends javax.swing.JInternalFrame {
+public class FormLogin extends javax.swing.JInternalFrame {
     
     private static SecurityView security;
     
     private SecurityServiceDao securityServiceDao;
     
-    public Login(SecurityServiceDao securityServiceDao) {
+    public FormLogin(SecurityServiceDao securityServiceDao) {
         initComponents();
         this.securityServiceDao = securityServiceDao;
         security = new SecurityView();
@@ -125,16 +125,14 @@ public class Login extends javax.swing.JInternalFrame {
         String usuario = jtUsuario.getText();
         String contrasena = String.valueOf(jpwContrasena.getPassword());
         
-        System.out.println(usuario + " - " + contrasena);
-        
         if (!usuario.equalsIgnoreCase("") && !contrasena.equalsIgnoreCase("")){
             security = securityServiceDao.validateUser(usuario, Util.Encriptar(contrasena));
             
-            if (security.getUsuario().getUsuario() != null){
+            if (security != null){
                 JOptionPane.showMessageDialog(this, String.format("Bievenido %s %s",security.getUsuario().getNombres(), security.getUsuario().getApellidos()), "Acceso", JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
             }else{
-                JOptionPane.showMessageDialog(this, "Error", String.format("Error, usuario %s no registrado", usuario), JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, String.format("Error, usuario %s no registrado", usuario), "Error", JOptionPane.ERROR_MESSAGE);
             }
             
         }else{

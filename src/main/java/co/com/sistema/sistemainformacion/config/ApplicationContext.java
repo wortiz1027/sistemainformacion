@@ -1,8 +1,5 @@
 package co.com.sistema.sistemainformacion.config;
 
-import co.com.sistema.sistemainformacion.repository.dao.SecurityDao;
-import co.com.sistema.sistemainformacion.service.dao.SecurityServiceDao;
-import co.com.sistema.sistemainformacion.service.impl.SecurityServiceDaoImpl;
 import co.com.sistema.sistemainformacion.utils.Constantes;
 import co.com.sistema.sistemainformacion.utils.LogginAspect;
 import co.com.sistema.sistemainformacion.utils.Util;

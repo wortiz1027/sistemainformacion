@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -37,40 +38,46 @@ public class SecurityDaoImpl implements SecurityDao {
         sbQuery.append("WHERE user.usuario  = ? ");
         sbQuery.append("AND   user.password = ? ");
         
-        System.out.println(sbQuery.toString());
+        SecurityView security = null;
         
-        SecurityView security  = template.queryForObject(sbQuery.toString(), 
-                                                         new Object[]{username, password}, 
-                                                         (ResultSet resultSet, int rowNum) -> {
-                                                                    SecurityView securityView = new SecurityView();
-                                                                    Usuario usuario = new Usuario();
-                                                                    List<Rol> roles = new ArrayList<Rol>();
-                                                                    Permiso permiso = new Permiso();
+        try {
+            
+            security  = template.queryForObject(sbQuery.toString(), 
+                                                new Object[]{username, password}, 
+                                                (ResultSet resultSet, int rowNum) -> {
+                                                           SecurityView securityView = new SecurityView();
+                                                           Usuario usuario = new Usuario();
+                                                           List<Rol> roles = new ArrayList<Rol>();
+                                                           Permiso permiso = new Permiso();
 
-                                                                    if (!resultSet.wasNull()){
-                                                                        usuario.setCedula(Integer.parseInt(resultSet.getString("cedula")));
-                                                                        usuario.setUsuario(resultSet.getString("usuario"));
-                                                                        usuario.setNombres(resultSet.getString("nombres"));
-                                                                        usuario.setApellidos(resultSet.getString("apellidos"));
-                                                                        usuario.setDireccion(resultSet.getString("direccion"));
-                                                                        usuario.setFechaNacimiento(Util.formatDate(resultSet.getString("fecha_nacimiento")));
-                                                                        usuario.setCelular(new BigInteger(resultSet.getString("celular")));
+                                                           if (!resultSet.wasNull()){
+                                                               usuario.setCedula(Integer.parseInt(resultSet.getString("cedula")));
+                                                               usuario.setUsuario(resultSet.getString("usuario"));
+                                                               usuario.setNombres(resultSet.getString("nombres"));
+                                                               usuario.setApellidos(resultSet.getString("apellidos"));
+                                                               usuario.setDireccion(resultSet.getString("direccion"));
+                                                               usuario.setFechaNacimiento(Util.formatDate(resultSet.getString("fecha_nacimiento")));
+                                                               usuario.setCelular(new BigInteger(resultSet.getString("celular")));
 
-                                                                        roles.add(new Rol(resultSet.getString("fecha_nacimiento")));
+                                                               roles.add(new Rol(resultSet.getString("fecha_nacimiento")));
 
-                                                                        permiso.setPermiso_menu(Integer.parseInt(resultSet.getString("permiso_menu")));
-                                                                        permiso.setPermiso_consultar_usuarios(Integer.parseInt(resultSet.getString("permiso_consultar_usuarios")));
-                                                                        permiso.setPermiso_crear_usuarios(Integer.parseInt(resultSet.getString("permiso_crear_usuarios")));
-                                                                        permiso.setPermiso_actualizar_usuarios(Integer.parseInt(resultSet.getString("permiso_actualizar_usuarios")));
-                                                                        permiso.setPermiso_eliminar_usuarios(Integer.parseInt(resultSet.getString("permiso_eliminar_usuarios")));                
-                                                                    }
+                                                               permiso.setPermiso_menu(Integer.parseInt(resultSet.getString("permiso_menu")));
+                                                               permiso.setPermiso_consultar_usuarios(Integer.parseInt(resultSet.getString("permiso_consultar_usuarios")));
+                                                               permiso.setPermiso_crear_usuarios(Integer.parseInt(resultSet.getString("permiso_crear_usuarios")));
+                                                               permiso.setPermiso_actualizar_usuarios(Integer.parseInt(resultSet.getString("permiso_actualizar_usuarios")));
+                                                               permiso.setPermiso_eliminar_usuarios(Integer.parseInt(resultSet.getString("permiso_eliminar_usuarios")));                
+                                                           }
 
-                                                                    securityView.setUsuario(usuario);
-                                                                    securityView.setRoles(roles);
-                                                                    securityView.setPermisos(permiso);
+                                                           securityView.setUsuario(usuario);
+                                                           securityView.setRoles(roles);
+                                                           securityView.setPermisos(permiso);
 
-                                                                    return securityView;
-                                                                });
+                                                           return securityView;
+                                                       });
+            
+        } catch (EmptyResultDataAccessException ere) {
+            return null;
+        }
         
         return security;
     }
