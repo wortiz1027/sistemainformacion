@@ -41,20 +41,18 @@ public class Aplicacion extends javax.swing.JFrame {
         jmLogin = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmSalir = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jmSeguridad = new javax.swing.JMenu();
+        jmiRegistroUsuarios = new javax.swing.JMenuItem();
+        jmiConsultarUsuarios = new javax.swing.JMenuItem();
+        jmRegistrosVotantes = new javax.swing.JMenu();
+        jmiRegistroVotantes = new javax.swing.JMenuItem();
+        jmiConsultarVotantes = new javax.swing.JMenuItem();
+        jmReportes = new javax.swing.JMenu();
+        jmiReportePlanillaControl = new javax.swing.JMenuItem();
+        jmiGrupoRenovacion = new javax.swing.JMenuItem();
+        jmiReporteVotantes = new javax.swing.JMenuItem();
+        jmAyuda = new javax.swing.JMenu();
+        jmiAcercaDe = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -115,55 +113,68 @@ public class Aplicacion extends javax.swing.JFrame {
 
         jMenuBar1.add(jmInicio);
 
-        jMenu5.setText("Seguridad");
-        jMenu5.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmSeguridad.setText("Seguridad");
+        jmSeguridad.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
 
-        jMenuItem2.setText("jMenuItem2");
-        jMenu5.add(jMenuItem2);
+        jmiRegistroUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiRegistroUsuarios.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiRegistroUsuarios.setText("Registro Usuarios");
+        jmSeguridad.add(jmiRegistroUsuarios);
 
-        jMenuItem3.setText("jMenuItem3");
-        jMenu5.add(jMenuItem3);
+        jmiConsultarUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiConsultarUsuarios.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiConsultarUsuarios.setText("Consulta Usuarios");
+        jmSeguridad.add(jmiConsultarUsuarios);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jmSeguridad);
 
-        jMenu2.setText("Registros");
-        jMenu2.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmRegistrosVotantes.setText("Registros");
+        jmRegistrosVotantes.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
 
-        jMenuItem4.setText("jMenuItem4");
-        jMenu2.add(jMenuItem4);
+        jmiRegistroVotantes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiRegistroVotantes.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiRegistroVotantes.setText("Registro Votantes");
+        jmRegistrosVotantes.add(jmiRegistroVotantes);
 
-        jMenuItem5.setText("jMenuItem5");
-        jMenu2.add(jMenuItem5);
+        jmiConsultarVotantes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jmiConsultarVotantes.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiConsultarVotantes.setText("Consultar Votantes");
+        jmRegistrosVotantes.add(jmiConsultarVotantes);
 
-        jMenuItem6.setText("jMenuItem6");
-        jMenu2.add(jMenuItem6);
+        jMenuBar1.add(jmRegistrosVotantes);
 
-        jMenuBar1.add(jMenu2);
+        jmReportes.setText("Reportes");
+        jmReportes.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
 
-        jMenu3.setText("Reportes");
-        jMenu3.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiReportePlanillaControl.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiReportePlanillaControl.setText("Planilla Control");
+        jmReportes.add(jmiReportePlanillaControl);
 
-        jMenuItem7.setText("jMenuItem7");
-        jMenu3.add(jMenuItem7);
+        jmiGrupoRenovacion.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiGrupoRenovacion.setText("Grupo Renovación");
+        jmiGrupoRenovacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGrupoRenovacionActionPerformed(evt);
+            }
+        });
+        jmReportes.add(jmiGrupoRenovacion);
 
-        jMenuItem8.setText("jMenuItem8");
-        jMenu3.add(jMenuItem8);
+        jmiReporteVotantes.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiReporteVotantes.setText("Reporte Votantes");
+        jmReportes.add(jmiReporteVotantes);
 
-        jMenuItem9.setText("jMenuItem9");
-        jMenu3.add(jMenuItem9);
+        jMenuBar1.add(jmReportes);
 
-        jMenuItem10.setText("jMenuItem10");
-        jMenu3.add(jMenuItem10);
+        jmAyuda.setText("Ayuda");
+        jmAyuda.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
 
-        jMenuBar1.add(jMenu3);
+        jmiAcercaDe.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
+        jmiAcercaDe.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
+        jmiAcercaDe.setText("Acerca de ...");
+        jmiAcercaDe.setToolTipText("");
+        jmAyuda.add(jmiAcercaDe);
 
-        jMenu4.setText("Ayuda");
-        jMenu4.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-
-        jMenuItem11.setText("jMenuItem11");
-        jMenu4.add(jMenuItem11);
-
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jmAyuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -196,6 +207,10 @@ public class Aplicacion extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jmSalirActionPerformed
 
+    private void jmiGrupoRenovacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGrupoRenovacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiGrupoRenovacionActionPerformed
+
     public static void main(String args[]) {
         
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -224,27 +239,25 @@ public class Aplicacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JDesktopPane jdpContenedor;
+    private javax.swing.JMenu jmAyuda;
     private javax.swing.JMenu jmInicio;
     private javax.swing.JMenuItem jmLogin;
+    private javax.swing.JMenu jmRegistrosVotantes;
+    private javax.swing.JMenu jmReportes;
     private javax.swing.JMenuItem jmSalir;
+    private javax.swing.JMenu jmSeguridad;
+    private javax.swing.JMenuItem jmiAcercaDe;
+    private javax.swing.JMenuItem jmiConsultarUsuarios;
+    private javax.swing.JMenuItem jmiConsultarVotantes;
+    private javax.swing.JMenuItem jmiGrupoRenovacion;
+    private javax.swing.JMenuItem jmiRegistroUsuarios;
+    private javax.swing.JMenuItem jmiRegistroVotantes;
+    private javax.swing.JMenuItem jmiReportePlanillaControl;
+    private javax.swing.JMenuItem jmiReporteVotantes;
     // End of variables declaration//GEN-END:variables
 }
