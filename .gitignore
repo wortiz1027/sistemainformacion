@@ -4,7 +4,6 @@ nbbuild/
 dist/
 nbdist/
 target/
-target/*
 log/
 .nb-gradle/
-*.class
+.class
